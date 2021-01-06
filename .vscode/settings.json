@@ -1,4 +1,5 @@
 // .vscode/settings.json
+// notwendig um VS Code Typescript zu unterstützen
 {
     "deno.enable": true,
     "deno.import_intellisense_origins": {

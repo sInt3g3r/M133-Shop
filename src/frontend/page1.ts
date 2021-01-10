@@ -21,9 +21,12 @@ export async function loadOverview() {
     const products = await porductResp.json();
     for(const product of products)
     {
-        const pic = await fetch(`/api/pic/${product.imageName}`);
-        productDiv.innerHTML += pic;
-        //console.log(product.id,product.productName);
+        productDiv.innerHTML += `
+        <div>
+        <img src="/api/pic/${product.imageName}" alt="${product.imageName}" width="100" height="100" />
+        <p>${product.description}</p>
+        </div>
+        `;
     }
     //console.log(log);
 }

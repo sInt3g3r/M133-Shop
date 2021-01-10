@@ -1,4 +1,4 @@
-//liefert alle Files aus : JavaScript, Bilder, html
+//liefert alle Files aus : JavaScript, icon, html
 import { send, Context } from "https://deno.land/x/oak@v6.4.0/mod.ts";
 
 export const fileserver = async (context: Context<Record<string, any>>) => {

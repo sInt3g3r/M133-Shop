@@ -23,10 +23,19 @@ export async function loadOverview() {
     {
         productDiv.innerHTML += `
         <div>
-        <img src="/api/pic/${product.imageName}" alt="${product.imageName}" width="100" height="100" />
-        <p>${product.description}</p>
+        <img src="api/pic/${product.imageName}" alt="${product.imageName}" width="200" height="200" />
+        <a href="page2.html">${product.productName}</a>
+        <div class="priceTag">
+            <p>${product.specialOffer}</p>
+            <p>${product.normalPrice}</p>
+        </div>
         </div>
         `;
     }
     //console.log(log);
+
+    const warenkorb = document.getElementById("warenkorb");
+    const warenkorbPrice = await fetch("/api/getPrice");
+    warenkorb.innerHTML += `Warenkorb ${warenkorbPrice}`;
+
 }

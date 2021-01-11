@@ -11,6 +11,8 @@ const persons: Person[] = [
     { id: "p01", firstName: "Hans", lastName: "Maulwurf" }
 ];
 
+var warenkorbPrice = 5.50;
+var id = 
 
 
 const router = new Router();
@@ -29,6 +31,13 @@ router
     .get("/api/getProducts", async context => {
         context.response.type = 'application/json';
         context.response.body = await Deno.readFile("src/backend/assets/products.json");
+    })
+    .get("/api/getPrice", async context => {
+        context.response.type = 'text/plain';
+        context.response.body = warenkorbPrice;
+    })
+    .post("/api/getProduct/:id", async context => {
+        const id = await context.request.body({ type: "json" }).value;
     }); 
 
 export const api = router.routes();

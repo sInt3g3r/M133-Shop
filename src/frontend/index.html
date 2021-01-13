@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dorfladen: Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>DORFLADEN</h1>
+    </header>
+    <nav>
+        <p id="warenkorb"></p>
+    </nav> 
+    <main>
+        <div id="products">
+        </div>
+        <ul></ul>
+    </main>
+    <script type="module">
+        import { loadOverview } from "./build.app.js";
+        loadOverview();
+    </script>
+</body>
+</html>

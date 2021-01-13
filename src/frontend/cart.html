@@ -3,24 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page 1</title>
+    <title>Dorfladen: Warenkorb</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        DORFLADEN
-    </header>
-    <nav>
-        <p id="warenkorb"></p>
-    </nav> 
     <main>
-        <div id="products">
-        </div>
-        <ul></ul>
+        <h1>Warenkorb</h1>
+        <div id="productList">
+        </div>   
     </main>
     <script type="module">
-        import { loadOverview } from "./build.app.js";
-        loadOverview();
+        import { loadDetail } from "./build.app.js";
+        loadCart();
     </script>
 </body>
 </html>

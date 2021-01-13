@@ -1,9 +1,3 @@
-export type Person = {
-    id: string,
-    firstName: string,
-    lastName: string
-}
-
 export type BuyProduct = {
     id: string,
     amount: number,

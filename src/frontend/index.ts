@@ -1,21 +1,6 @@
 /// <reference lib="dom" />
 
-import { Person } from "../common/types.ts";
-
 export async function loadOverview() {
-    const response = await fetch("/api/persons");
-    const persons: Person[] = await response.json();
-
-    // const list = document.querySelector("ul");
-
-    // for (const person of persons) {
-    //     list.innerHTML += `
-    //         <li>
-    //             <a href="./page2.html?personId=${person.id}">${person.firstName} ${person.lastName}</a>
-    //         </li>
-    //     `;
-    // }
-
     const productDiv = document.getElementById("products");
     const porductResp = await fetch("/api/getProducts");
     const products = await porductResp.json();
@@ -24,20 +9,21 @@ export async function loadOverview() {
         productDiv.innerHTML += `
         <div>
         <img src="api/pic/${product.imageName}" alt="${product.imageName}" width="200" height="200" />
-        <a href="page2.html?id=${product.id}">${product.productName}</a>
+        <a href="detail.html?id=${product.id}">${product.productName}</a>
         <div class="priceTag">
-            <p>${product.specialOffer}</p>
-            <p>${product.normalPrice}</p>
+            <p>Aktion: ${product.specialOffer}</p>
+            <p>Normaler Preis: ${product.normalPrice}</p>
         </div>
         </div>
         `;
     }
-    //console.log(log);
 
     const warenkorb = document.getElementById("warenkorb");
     const httpResponse = await fetch("/api/getPayout");
     const warenkorbPrice = await httpResponse.text();
     console.log(warenkorbPrice);
-    warenkorb.innerHTML += `Warenkorb ${warenkorbPrice}`;
-
+    warenkorb.innerHTML += `
+    <div>
+        <a href="/cart.html">Warenkorb ${warenkorbPrice}</a>
+    </div>`;
 }

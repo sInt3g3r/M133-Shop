@@ -24,7 +24,7 @@ export async function loadOverview() {
         productDiv.innerHTML += `
         <div>
         <img src="api/pic/${product.imageName}" alt="${product.imageName}" width="200" height="200" />
-        <a href="page2.html">${product.productName}</a>
+        <a href="page2.html?id=${product.id}">${product.productName}</a>
         <div class="priceTag">
             <p>${product.specialOffer}</p>
             <p>${product.normalPrice}</p>
@@ -35,7 +35,9 @@ export async function loadOverview() {
     //console.log(log);
 
     const warenkorb = document.getElementById("warenkorb");
-    const warenkorbPrice = await fetch("/api/getPrice");
+    const httpResponse = await fetch("/api/getPayout");
+    const warenkorbPrice = await httpResponse.text();
+    console.log(warenkorbPrice);
     warenkorb.innerHTML += `Warenkorb ${warenkorbPrice}`;
 
 }

@@ -94,7 +94,6 @@ function increaseProductAmount(product_id:string)
             if( productAlreadybought != undefined)
             {
                 productAlreadybought.amount += 1;
-                console.log("inc"+productAlreadybought.amount);
             }
             else
             {
@@ -102,7 +101,6 @@ function increaseProductAmount(product_id:string)
                     product: product,
                     amount: 1,
                 } )
-                console.log("push");
             }
         }
 }
@@ -120,13 +118,11 @@ function decreaseProductAmount(product_id:string)
                 if (productAlreadybought.amount > 1)
                 {
                     productAlreadybought.amount -= 1;
-                    console.log("decrease"+productAlreadybought.amount);
                 }
             }
             else if(productAlreadybought.amount == 1)
             {
                 boughtProducts.splice(productIndex, 1);
-                console.log("delete");
             }
         }
 }
@@ -138,6 +134,5 @@ function removeProduct(product_id:string)
         if(productIndex >= 0)
         {
                 boughtProducts.splice(productIndex, 1);
-                console.log("removed");
         }
 }

@@ -28,5 +28,4 @@ export async function loadOverview() {
 
     const boughtResponse = await fetch("/api/getBoughtProducts");
     const boughtProducts = await boughtResponse.text();
-    console.log(boughtProducts);
 }

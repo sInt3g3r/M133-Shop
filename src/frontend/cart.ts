@@ -54,7 +54,6 @@ async function incAmount(event:any)
 {
     const productID = event.target.id.split(`-`)[2];
     const request = await fetch(`/api/incAmount/${productID}`, {method: 'PUT'});
-    console.log(productID);
     if(request.status != 200)
     {
         window.alert("Fehler: " + request.statusText);

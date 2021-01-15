@@ -36,7 +36,6 @@ export async function loadDetail() {
 async function addItemToCart()
 {
     const request = await fetch(`/api/incAmount/${productId}`, {method: 'PUT'});
-    console.log(productId);
     if(request.status != 200)
     {
         window.alert("Fehler: " + request.statusText);

@@ -27,7 +27,7 @@ export async function loadDetail() {
     const cartPrice = await payoutResponse.text();
     cartText.innerHTML += `
     <div>
-        <a href="/cart.html">Warenkorb ${cartPrice}</a>
+        <a href="/cart.html">Warenkorb ${cartPrice} CHF</a>
     </div>`;
 
     document.getElementById("cartIcon").addEventListener("click", addItemToCart);

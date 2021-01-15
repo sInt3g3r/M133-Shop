@@ -21,7 +21,7 @@ export async function loadCart() {
         boughtProducts.forEach(bought => {
             productList.innerHTML += `
                 <div id="grid-productName">${bought.product.productName}</div>
-                <div id="grid-articlePrice">${bought.product.specialOffer.toFixed(2)} CHF</div>
+                <div id="grid-articlePrice">CHF ${bought.product.specialOffer.toFixed(2)}</div>
                 <div id="grid-btnDec">
                     <button id="grid-btnDec-${bought.product.id}" type="button">-</button>
                 </div>
@@ -29,7 +29,7 @@ export async function loadCart() {
                 <div id="grid-btnInc">
                     <button id="grid-btnInc-${bought.product.id}" type="button">+</button>
                 </div>
-                <div id="grid-totalPrice">${(bought.product.specialOffer * bought.amount).toFixed(2)} CHF</div>
+                <div id="grid-totalPrice">CHF ${(bought.product.specialOffer * bought.amount).toFixed(2)}</div>
             `
         });
 
@@ -38,7 +38,7 @@ export async function loadCart() {
             document.getElementById(`grid-btnInc-${bought.product.id}`).addEventListener("click", incAmount);
         });
 
-        payoutText.innerHTML = `Total Preis: ${payoutPrice.toFixed(2)} CHF`;
+        payoutText.innerHTML = `Total Preis: CHF ${payoutPrice.toFixed(2)}`;
         
     }
     else

@@ -8,8 +8,8 @@ export async function loadDetail() {
     if(productId != null)
     {
         const productDetail = document.getElementById("productDetail");
-        const porductResp = await fetch(`/api/getProduct/${productId}`);
-        const product:Product = await porductResp.json();
+        const porductResponse = await fetch(`/api/getProduct/${productId}`);
+        const product:Product = await porductResponse.json();
         productDetail.innerHTML += `
             <div>
             <h1>${product.productName}</h1>
@@ -23,8 +23,8 @@ export async function loadDetail() {
     }
 
     const warenkorb = document.getElementById("warenkorb");
-    const httpResponse = await fetch("/api/getPayout");
-    const warenkorbPrice = await httpResponse.text();
+    const payoutResponse = await fetch("/api/getPayout");
+    const warenkorbPrice = await payoutResponse.text();
     console.log(warenkorbPrice);
     warenkorb.innerHTML += `
     <div>

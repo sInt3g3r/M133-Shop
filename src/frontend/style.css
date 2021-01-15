@@ -14,3 +14,21 @@ html, body {
     display: flex;
     flex-direction: column;
 }
+
+#product-Container{
+    display:grid;
+    /* Product - Einzel CHF - btnDec - STK - btnInc - Total CHF */
+    grid-template-columns: 200px 100px 30px 30px 30px 100px;
+}
+
+#grid-amount {
+    width: 20px;
+}
+
+#grid-btnInc, #grid-btnDec {
+    width: 30px;
+}
+
+#grid-articlePrice, #grid-totalPrice, #grid-amount {
+    text-align: center;
+}

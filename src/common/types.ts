@@ -1,9 +1,3 @@
-export type BuyProduct = {
-    id: string,
-    amount: number,
-    price: number
-}
-
 export type Product = {
     id: string,
     productName: string,
@@ -11,4 +5,9 @@ export type Product = {
     normalPrice: number,
     imageName: string,
     description: string
+  }
+
+  export type boughtProduct = {
+    product: Product,
+    amount: number
   }

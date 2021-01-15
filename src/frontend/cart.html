@@ -9,11 +9,12 @@
 <body>
     <main>
         <h1>Warenkorb</h1>
-        <div id="productList">
-        </div>   
+        <div id="product-Container">
+        </div>
+        <p id="payoutPrice"></p>   
     </main>
     <script type="module">
-        import { loadDetail } from "./build.app.js";
+        import { loadCart } from "./build.app.js";
         loadCart();
     </script>
 </body>

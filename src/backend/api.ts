@@ -1,7 +1,6 @@
 import { Router, send } from "https://deno.land/x/oak@v6.4.0/mod.ts";
 import { Session } from "https://deno.land/x/session@1.1.0/mod.ts";
-import { BuyProduct } from "../common/types.ts";
-import { Product } from "../common/types.ts";
+import { Product, boughtProduct } from "../common/types.ts";
 
 // Session konfigurieren und starten
 const session = new Session({ framework: "oak" });
@@ -9,15 +8,9 @@ await session.init();
 export const usableSession = session.use()(session);
 
 const decoder = new TextDecoder('utf-8');
-const products:Product[] = JSON.parse(decoder.decode(await Deno.readFile("src/backend/assets/products.json")));
+const productList:Product[] = JSON.parse(decoder.decode(await Deno.readFile("src/backend/assets/products.json")));
 
-
-
-//var buyedProducts: BuyProduct[] = []
-var boughtProducts: BuyProduct[] = [
-    {id: "001", amount: 5, price: 10},
-    {id: "002", amount: 4, price: 5}
-]
+var boughtProducts: boughtProduct[] = [];
 
 
 const router = new Router();
@@ -26,15 +19,19 @@ router
         const pic_name = context.params.pic_name;
         await send(context, `src/backend/assets/${pic_name}`); //von deno run (pfad)
     }) 
-    .get("/api/getProducts", async context => {
+    .get("/api/getAllProducts", async context => {
         context.response.type = 'application/json';
-        context.response.body = products;
+        context.response.body = productList;
+    })
+    .get("/api/getBoughtProducts", async context => {
+        context.response.type = 'application/json';
+        context.response.body = boughtProducts;
     })
     .get("/api/getProduct/:id", async context => {
         const product_id = context.params.id;
         let singleProduct = null;
         context.response.type = 'application/json';
-        products.forEach(product => {
+        productList.forEach(product => {
             if(product.id == product_id)
             {
                 singleProduct = product;
@@ -47,11 +44,11 @@ router
         let totalPrice = 0;
         if(boughtProducts.length > 0)
         {
-            boughtProducts.forEach(product => {
-                totalPrice += product.amount * product.price;
+            boughtProducts.forEach(bought => {
+                totalPrice += bought.amount * bought.product.specialOffer;
             });
         }
-        context.response.body = totalPrice;
+        context.response.body = totalPrice.toFixed(2);
     })
     .put("/api/incAmount/:id", async context => {
         const product_id = context.params.id;
@@ -86,8 +83,8 @@ export const api = router.routes();
 
 function increaseProductAmount(product_id:string)
 {
-        let product = products.find(p => p.id == product_id);
-        let productAlreadybought = boughtProducts.find(p => p.id == product_id);
+        let product = productList.find(p => p.id == product_id);
+        let productAlreadybought = boughtProducts.find(bought => bought.product.id == product_id);
         if(product != undefined)
         {
             if( productAlreadybought != undefined)
@@ -98,9 +95,8 @@ function increaseProductAmount(product_id:string)
             else
             {
                 boughtProducts.push( {
-                    id: product_id,
+                    product: product,
                     amount: 1,
-                    price: product.specialOffer
                 } )
                 console.log("push");
             }
@@ -110,7 +106,7 @@ function increaseProductAmount(product_id:string)
 
 function decreaseProductAmount(product_id:string)
 {
-        let productIndex = boughtProducts.findIndex(p => p.id == product_id);
+        let productIndex = boughtProducts.findIndex(bought => bought.product.id == product_id);
         
         if(productIndex >= 0)
         {
@@ -134,7 +130,7 @@ function decreaseProductAmount(product_id:string)
 
 function removeProduct(product_id:string)
 {
-        let productIndex = boughtProducts.findIndex(p => p.id == product_id);
+        let productIndex = boughtProducts.findIndex(bought => bought.product.id == product_id);
         if(productIndex >= 0)
         {
                 boughtProducts.splice(productIndex, 1);

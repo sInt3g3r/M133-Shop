@@ -2,8 +2,8 @@
 
 export async function loadOverview() {
     const productDiv = document.getElementById("products");
-    const porductResp = await fetch("/api/getProducts");
-    const products = await porductResp.json();
+    const porductResponse = await fetch("/api/getAllProducts");
+    const products = await porductResponse.json();
     for(const product of products)
     {
         productDiv.innerHTML += `
@@ -19,11 +19,15 @@ export async function loadOverview() {
     }
 
     const warenkorb = document.getElementById("warenkorb");
-    const httpResponse = await fetch("/api/getPayout");
-    const warenkorbPrice = await httpResponse.text();
+    const payoutResponse = await fetch("/api/getPayout");
+    const warenkorbPrice = await payoutResponse.text();
     console.log(warenkorbPrice);
     warenkorb.innerHTML += `
     <div>
         <a href="/cart.html">Warenkorb ${warenkorbPrice}</a>
     </div>`;
+
+    const boughtResponse = await fetch("/api/getBoughtProducts");
+    const boughtProducts = await boughtResponse.text();
+    console.log(boughtProducts);
 }

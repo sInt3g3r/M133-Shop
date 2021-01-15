@@ -8,9 +8,9 @@ Weitere Infos unter: https://deno.land/manual/getting_started/installation
 
 1) Powershell als Administrator starten
 2) Folgender Befehl ausführen: 
-    iwr https://deno.land/x/install/install.ps1 -useb | iex
+    `iwr https://deno.land/x/install/install.ps1 -useb | iex`
 3) Testen mit dem Befehl:
-    deno --version
+    `deno --version`
 
 ## Applikations-Starten ##
 Achtung:
@@ -19,13 +19,13 @@ Dies kann man erkennen wenn die Datei `start.bat` oder `README.md` vorhanden sin
 
 1) Powershell als Administrator starten
 2) Befehl eingeben:
-    cmd
+    `cmd`
 3) Zum Haputordner navigieren.
 4) Mit folgendem Befehl kann nun der Server gestartet werden:
-    start.bat
+    `start.bat`
 
 Achtung:
-Der Server wird mit dem Parameter "--allow-all" gestartet!
+Der Server wird mit dem Parameter `--allow-all` gestartet!
 
 
 Alternativ können Sie die beiden Zeilen des Scripts auch manuell ausführen:

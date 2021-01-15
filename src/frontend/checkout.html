@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dorfladen: Bestellen</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Bestellung Absenden</h1>
+    <nav>
+        <a href="/cart.html">Zurück</a>
+    </nav>
+    <form action="/confirm.html">
+        <wrapper>
+            <div id="input-container">
+                <label for="vorname">Vorname</label>
+                <input type="text" id="iVorname" name="vorname" pattern="[a-zA-Z]*" required>
+                <label for="nachname">Nachname</label>
+                <input type="text" id="iNachname" name="nachname" pattern="[a-zA-Z]*" required>
+                <label for="mail">E-Mail</label>
+                <input type="email" id="iNachname" name="mail" required>
+            </div>
+        </wrapper>
+        <input id="submit" type="submit" value="Bestellen">
+    </form>
+    <script type="module">
+        import { loadCheckout } from "./build.app.js";
+        loadCheckout();
+    </script>
+</body>
+</html>

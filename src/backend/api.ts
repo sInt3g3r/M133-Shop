@@ -73,6 +73,10 @@ router
             removeProduct(product_id);
         }
         context.response.status = 200;
+    }) 
+    .put("/api/clearCart", async context => {
+        boughtProducts = [];
+        context.response.status = 200;
     });  
 
 export const api = router.routes();

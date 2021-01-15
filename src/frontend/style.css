@@ -32,3 +32,10 @@ html, body {
 #grid-articlePrice, #grid-totalPrice, #grid-amount {
     text-align: center;
 }
+
+#input-container {
+    display: grid;
+    grid-template-columns: 150px 200px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}

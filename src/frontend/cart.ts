@@ -38,7 +38,7 @@ export async function loadCart() {
             document.getElementById(`grid-btnInc-${bought.product.id}`).addEventListener("click", incAmount);
         });
 
-        payoutText.innerHTML = `Total Preis: ${payoutPrice.toFixed(2)}`;
+        payoutText.innerHTML = `Total Preis: ${payoutPrice.toFixed(2)} CHF`;
         
     }
     else
